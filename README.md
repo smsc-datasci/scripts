@@ -7,3 +7,4 @@ Please be sure to update your scripts folder at the start of each week (*or when
 ```
 git pull
 ```
+
