@@ -18,11 +18,7 @@ messy_birds <-
 # Now you! The data frame messy_birds contains multiple levels of observation.
 # Using "spp" as the common column, split the data into two tidy tibbles:
 
-measures <- 
-  messy_birds
 
-bird_info <- 
-  messy_birds
 
 # mutating joins ----------------------------------------------------------
 
