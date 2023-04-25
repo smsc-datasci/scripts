@@ -1,97 +1,36 @@
 
 # setup -------------------------------------------------------------------
 
+library(lubridate)
 library(tidyverse)
 
-source('scripts/source_script.R')
+iris_tbl <-
+  read_rds('data/raw/iris.rds')
 
-# Read in the data:
+# split-apply-combine, Rube Goldberg method -------------------------------
 
-iris <-
-  read_csv('data/raw/iris.csv')
+# Now you! Subset iris_tbl to observations of Iris setosa:
 
-# petal length by species, indexing with for loops ------------------------
-
-# For loop:
-
-mean_petal_lengths <-
-  vector(
-    'list',
-    length = length(unique(iris$species)))
-
-for(i in 1:length(unique(iris$species))) {
-  # Split:
-  
-  iris_split <- 
-    iris %>% 
-    filter(species == unique(iris$species)[i])
-  
-  # Apply:
-  
-  mean_petal_lengths[[i]] <-
-    tibble(
-      species = unique(iris$species)[i],
-      value = mean(iris_split$petal_length))
-}
-
-# Combine:
-
-bind_rows(mean_petal_lengths)
-
-# petal length by species, indexing with a map ----------------------------
-
-# Map:
+iris_tbl
 
 
 
-# Map by row:
+# Now you! Write a custom function that will calculate the mean sepal length of
+# any of the iris species:
 
 
 
-# petal length by species, variables with a for loop ----------------------
-
-# For loop:
-
-mean_petal_lengths_by_value <-
-  vector(
-    'list',
-    length = length(unique(iris$species)))
-
-for(x in unique(iris$species)) {
-  # Split:
-  
-  iris_split <- 
-    iris %>% 
-    filter(species == x)
-  
-  # Apply:
-  
-  mean_petal_lengths_by_value[[x]] <-
-    tibble(
-      species = x,
-      value = mean(iris_split$petal_length))
-}
-
-# Combine:
-
-bind_rows(mean_petal_lengths_by_value)
-
-# petal length by species, variables with a map ----------------------
-
-# Map by row with a variable:
+# Now you! Use your custom function to generate a list of mean sepal lengths for
+# the three iris species:
 
 
 
-# Map by row, a bit more concise:
+
+# introducing purrr! ------------------------------------------------------
 
 
 
-# Map by row, now with a tilde!
 
+# A simpler way ....
 
-
-# But of course ... -------------------------------------------------------
-
-iris %>% 
-  group_by(species) %>% 
-  summarize(value = mean(petal_length))
+iris_tbl
