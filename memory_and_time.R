@@ -162,7 +162,7 @@ profmem::profmem(
         1E6),
     b = 
       rep(1:2, 1E6)) %>% 
-    group_by(a) %>%
+    # group_by(a) %>%
     mutate(b = b + 100)) %>% 
   profmem::total() * 1E-6
 
@@ -203,11 +203,6 @@ profmem({
   }) %>% 
   total() * 1E-6
 
-
 lobstr::obj_size(hello_fact)
-
-total(generate_character) * 1E-6
-
-total(generate_factor) * 1E-6
 
 
